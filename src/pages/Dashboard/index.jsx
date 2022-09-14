@@ -5,7 +5,6 @@ import { useRocket } from "../../providers/Rockets";
 import { useUser } from "../../providers/User";
 import { Container } from "./styles";
 import { useHistory } from "react-router-dom";
-import { useForm } from "react-hook-form";
 
 const DashBoard = () => {
   const { isAuth } = useUser();
@@ -24,10 +23,10 @@ const DashBoard = () => {
 
   return (
     <>
-      <Header />
       {modalADD && <Modal />}
       {allRockets.map((element) => (
         <Container key={element.id} >
+          <Header />
           <img src={element.image} alt="foto do foguete" />
           <div>
             <h1>Name:{element.name}</h1>
