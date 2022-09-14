@@ -1,12 +1,19 @@
 import styled from "styled-components";
 
 export const Container = styled.div `
-  width: 27rem;
   margin: 3rem 4rem;
-  /* display: flex; */
-  /* flex-wrap: wrap; */
-  /* justify-content: space-around; */
-  /* align-items: center; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  h2{
+    font-size: 12px;
+  }
+
+  :hover{
+    cursor: pointer;
+    opacity: 0.4;
+  }
 
   div{
     display: flex;
@@ -15,7 +22,7 @@ export const Container = styled.div `
   }
 
   img {
-    max-height:300px;
+    max-height:220px;
     width: auto;
     height: auto;
     border-radius: 8px;

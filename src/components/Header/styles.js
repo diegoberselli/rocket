@@ -6,6 +6,14 @@ export const Container = styled.div `
     padding: 0 3rem;
     align-items: center;
 
+    h1{
+      :hover{
+        cursor:pointer;
+        color:#FF577F;
+      }
+    }
+
+
 `;
 
 export const StyledButton = styled.button `

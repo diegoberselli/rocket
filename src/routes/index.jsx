@@ -1,22 +1,16 @@
 import { Route, Switch } from "react-router-dom";
+import DashBoard from "../pages/Dashboard";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
+import Rocket from "../pages/Rocket";
 
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route exact path="/login">
-        <Login />
-      </Route>
-      {/* <Route path="/dashboard">
-        <Dashboard
-          authenticated={authenticated}
-          setAuthenticated={setAuthenticated}
-        />
-      </Route> */}
+      <Route exact path="/" component={Home} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/rocket/:id" component={Rocket} />
+      <Route path="/dashboard" component={DashBoard} />
     </Switch>
   );
 };

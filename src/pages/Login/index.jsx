@@ -1,13 +1,12 @@
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import api from "../../services/api";
 import Header from "../../components/Header";
 import { Container, StyledForm, StyledInput } from "./styles";
-import { toast } from "react-toastify";
+import { useUser } from "../../providers/User";
 
-const Login = ({ authenticated, setAuthenticated }) => {
+const Login = () => {
   const schema = yup.object().shape({
     username: yup.string().required("Campo obrigatório"),
     password: yup.string().required("Campo obrigatório"),
@@ -21,37 +20,22 @@ const Login = ({ authenticated, setAuthenticated }) => {
     resolver: yupResolver(schema),
   });
 
+  const { login, isAuth } = useUser();
   const history = useHistory();
 
-  const onSubmitFunction = (data) => {
-    api
-      .post("/login", data)
-      .then((response) => {
-        const { token } = response.data;
-
-        localStorage.setItem("@KenzieHub:token", JSON.stringify(token));
-        setAuthenticated(true);
-        toast.success("Logado com sucesso");
-        return history.push("/dashboard");
-      })
-      .catch((err) => {
-        toast.error("Username ou senha inválidos")
-        console.log(err);
-      });
+  const onSubmit = (data) => {
+    login(data, history);
   };
 
-  if (authenticated) {
-    return <Redirect to="/dashboard" />;
+  if (isAuth) {
+    return history.push("/dashboard");
   }
 
   return (
     <>
       <Header />
       <Container>
-        <StyledForm
-          onSubmit={handleSubmit(onSubmitFunction)}
-          className="formulario"
-        >
+        <StyledForm onSubmit={handleSubmit(onSubmit)} className="formulario">
           <h2>Login</h2>
           <label>Username</label>
           <StyledInput
