@@ -28,3 +28,10 @@ export const StyledButton = styled.button `
     background-color:  #FF577F;
   }
 `;
+
+export const Spinner = styled.div `
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px
+`

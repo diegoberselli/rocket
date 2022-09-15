@@ -11,20 +11,26 @@ export const RocketProvider = ({ children }) => {
   const [rocketList, setRocketList] = useState([]);
   const [rocketId, setRocketId] = useState([]);
   const [allRockets, setAllRockets] = useState([]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [id, setId] = useState();
   const [modalADD, setModalADD] = useState(false);
-  const [modalEdit, setModalEdit] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { token } = useUser();
 
   useEffect(() => {
-    api.get(`/rockets`).then((response) => setAllRockets(response.data));
-  }, [allRockets]);
-
+    api.get(`/rockets`).then((response) => {
+      setLoading(true);
+      setAllRockets(response.data);
+      setLoading(false);
+    });
+    
+  }, [allRockets], );
+  
   useEffect(() => {
-    api
-      .get(`/rockets/pagination?take=2&skip=${page}`)
-      .then((response) => setRocketList(response.data));
+    api.get(`/rockets/pagination?take=2&skip=${page}`).then((response) => {
+      setLoading(true);
+      setRocketList(response.data);
+    });
   }, [page]);
 
   const previousPage = () => {
@@ -35,9 +41,9 @@ export const RocketProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    api
-    .get(`/rockets/${id}`)
-    .then((response) => setRocketId(response.data))
+    api.get(`/rockets/${id}`).then((response) => {
+    setLoading(true);
+    setRocketId(response.data)});
   }, [id]);
 
   const addRocket = (data) => {
@@ -92,7 +98,7 @@ export const RocketProvider = ({ children }) => {
         modalADD,
         UpdateRockets,
         deleteRocket,
-
+        loading,
       }}
     >
       {children}

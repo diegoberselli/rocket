@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0px;
     background-color: var(--grey-4);
     width: 100%;
-    height: 100%;
+    height: 100vh;
     font-family: "Inter", sans-serif;
     font-size: 12px;
     color:var(--grey-0);

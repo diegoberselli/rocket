@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div `
-    width: 100%;
+    width: auto;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     margin-bottom: 50px;
 
@@ -14,6 +14,12 @@ export const Container = styled.div `
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .buttons{
+      display: flex;
+      flex-direction: row;
+    }
+
 
     button{
       width: 100px;
@@ -45,12 +51,8 @@ export const Container = styled.div `
 }
 `;
 
-export const ButtonStyled = styled.button `
-  color: pink;
-`
-
 export const ContainerModal = styled.div `
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.9);
     width: 100vw;
     height: 150vh;
     position: fixed;

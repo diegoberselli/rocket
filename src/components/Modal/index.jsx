@@ -1,18 +1,13 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRocket } from "../../providers/Rockets";
 import { Container } from "./styles";
 
 const Modal = () => {
   const { register, handleSubmit } = useForm();
-  const { addRocket, setModalADD, updateRocket } = useRocket();
+  const { addRocket, setModalADD } = useRocket();
 
   const addOneRocket = (data) => {
     addRocket(data);
-  };
-
-  const updateOneRocket = (data) => {
-    updateRocket(data);
   };
 
   return (
