@@ -19,12 +19,13 @@ export const Container = styled.div `
     display: flex;
     flex-direction: column;
     align-items: center;
+    object-fit: cover;
   }
 
   img {
-    max-height:220px;
-    width: auto;
-    height: auto;
+    max-width:100%;
+    width: 350px;
+    height: 250px;
     border-radius: 8px;
     object-fit: cover;
 }

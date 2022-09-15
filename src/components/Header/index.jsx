@@ -28,6 +28,7 @@ const Header = () => {
             onClick={() => {
               localStorage.clear();
               history.push("/");
+              toast.success("logout efetuado com sucesso")
               setIsAuth(false);
             }}
           >

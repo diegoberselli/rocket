@@ -27,4 +27,15 @@ width: 100px;
     cursor: pointer;
     background-color: var(--grey-2);
   }
+
+  @media(max-width: 768px) {
+      width: 60px;
+      background-color:transparent;
+      :hover {
+        cursor: pointer;
+        background-color: transparent;
+        border:1px solid #FF577F;   
+  }
+  }
+
 `;

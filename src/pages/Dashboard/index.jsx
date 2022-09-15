@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 const DashBoard = () => {
   const { isAuth } = useUser();
   const { allRockets, modalADD, deleteRocket } = useRocket();
-  const {id} = useRocket
+  const { id } = useRocket;
   const history = useHistory();
 
   if (!isAuth) {
@@ -20,13 +20,12 @@ const DashBoard = () => {
     deleteRocket(id);
   };
 
-
   return (
     <>
+      <Header />
       {modalADD && <Modal />}
       {allRockets.map((element) => (
-        <Container key={element.id} >
-          <Header />
+        <Container key={element.id}>
           <img src={element.image} alt="foto do foguete" />
           <div>
             <h1>Name:{element.name}</h1>

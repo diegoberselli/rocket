@@ -15,7 +15,7 @@ export const RocketProvider = ({ children }) => {
   const [id, setId] = useState();
   const [modalADD, setModalADD] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
-  const { isAuth, token } = useUser();
+  const { token } = useUser();
 
   useEffect(() => {
     api.get(`/rockets`).then((response) => setAllRockets(response.data));
@@ -35,7 +35,9 @@ export const RocketProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    api.get(`/rockets/${id}`).then((response) => setRocketId(response.data));
+    api
+    .get(`/rockets/${id}`)
+    .then((response) => setRocketId(response.data))
   }, [id]);
 
   const addRocket = (data) => {
@@ -50,7 +52,7 @@ export const RocketProvider = ({ children }) => {
       .catch((error) => toast.error("erro"));
   };
 
-  const UpdateRockets = (data) => {
+  const UpdateRockets = (data, id) => {
     api
       .patch(`/rockets/${id}`, data, {
         headers: { Authorization: `Bearer ${token}` },
@@ -90,6 +92,7 @@ export const RocketProvider = ({ children }) => {
         modalADD,
         UpdateRockets,
         deleteRocket,
+
       }}
     >
       {children}

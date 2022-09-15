@@ -1,12 +1,10 @@
 import { createContext, useContext, useState } from "react";
 import api from "../../services/api";
 import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [userInfo, setUserInfo] = useState({});
   const [token, setToken] = useState(
     localStorage.getItem("@token:Rocket") || ""
   );
@@ -34,7 +32,7 @@ export const UserProvider = ({ children }) => {
 
 
   return (
-    <UserContext.Provider value={{ userInfo, token, login, isAuth, setToken, setIsAuth}}>
+    <UserContext.Provider value={{ token, login, isAuth, setToken, setIsAuth}}>
       {children}
     </UserContext.Provider>
   );

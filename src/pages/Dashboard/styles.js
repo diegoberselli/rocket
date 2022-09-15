@@ -35,9 +35,9 @@ export const Container = styled.div `
   }
 
   img {
-    max-height:200px;
-    width: auto;
-    height: auto;
+    max-width:100%;
+    width: 300px;
+    height: 200px;
     align-items: center;
     display: flex;
     border-radius: 8px;
