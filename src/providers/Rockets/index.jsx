@@ -16,6 +16,8 @@ export const RocketProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const { token } = useUser();
 
+
+
   useEffect(() => {
     api.get(`/rockets`).then((response) => {
       setLoading(true);
@@ -28,6 +30,10 @@ export const RocketProvider = ({ children }) => {
     api.get(`/rockets/pagination?take=2&skip=${page}`).then((response) => {
       setLoading(true);
       setRocketList(response.data);
+      if(!response.data[0]){
+        setPage(0)
+      }
+
     });
   }, [page]);
 
