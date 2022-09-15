@@ -3,16 +3,11 @@ import styled from "styled-components";
 export const Container = styled.div `
     background-color: rgba(0,0,0,0.9);
     position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 20px;
+    padding: 20px 80px;
     border-radius: 7px;
-
-    @media screen and (min-width: 768px) {
-        left: 35%;
-  }
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     .modal-add-title{
         display: flex;
@@ -30,7 +25,7 @@ export const Container = styled.div `
     form{
         display: flex;
         flex-direction: column;
-        padding: 0 70px;
+        /* padding: 0 50px; */
 
         label{
             margin-top: 15px;

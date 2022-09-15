@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useHistory, Redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import api from "../../services/api";
@@ -23,9 +22,8 @@ export const RocketProvider = ({ children }) => {
       setAllRockets(response.data);
       setLoading(false);
     });
-    
-  }, [allRockets], );
-  
+  }, [allRockets]);
+
   useEffect(() => {
     api.get(`/rockets/pagination?take=2&skip=${page}`).then((response) => {
       setLoading(true);
@@ -42,8 +40,9 @@ export const RocketProvider = ({ children }) => {
 
   useEffect(() => {
     api.get(`/rockets/${id}`).then((response) => {
-    setLoading(true);
-    setRocketId(response.data)});
+      setLoading(true);
+      setRocketId(response.data);
+    });
   }, [id]);
 
   const addRocket = (data) => {
@@ -77,7 +76,6 @@ export const RocketProvider = ({ children }) => {
       })
       .then((response) => {
         toast.success("Rocket deletado");
-        setModalEdit(false);
       })
       .catch((err) => toast.error("error"));
   };

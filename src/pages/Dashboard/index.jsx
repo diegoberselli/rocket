@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 
 const DashBoard = () => {
   const { isAuth } = useUser();
-  const { allRockets, modalADD, deleteRocket, modalEdit } = useRocket();
+  const { allRockets, modalADD, deleteRocket } = useRocket();
   const history = useHistory();
 
   if (!isAuth) {
